@@ -1,0 +1,118 @@
+---
+title: "CHANGE THIS TO BE THE TITLE OF YOUR POST"
+author: "Ryan Kenney"
+date: '2022-11-06'
+categories: [B1G, code, analysis]
+image: ""
+format: 
+  html:
+    code-fold: true
+---
+
+My text will go here.
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggbump)
+library(ggrepel)
+
+defense14 <- read_csv("defense14.csv")
+defense15 <- read_csv("defense15.csv")
+defense16 <- read_csv("defense16.csv")
+defense17 <- read_csv("defense17.csv")
+defense18 <- read_csv("defense18.csv")
+defense19 <- read_csv("defense19.csv")
+defense20 <- read_csv("defense20.csv")
+defense21 <- read_csv("defense21.csv")
+defense22 <- read_csv("defense22.csv")
+
+teamdefense14 <- defense14 %>% 
+  mutate(
+    Season = "2014"
+  )
+
+teamdefense15 <- defense15 %>% 
+  mutate(
+    Season = "2015"
+  )
+
+teamdefense16 <- defense16 %>% 
+  mutate(
+    Season = "2016"
+  )
+
+teamdefense17 <- defense17 %>% 
+  mutate(
+    Season = "2017"
+  )
+
+teamdefense18 <- defense18 %>% 
+  mutate(
+    Season = "2018"
+  )
+
+teamdefense19 <- defense19 %>% 
+  mutate(
+    Season = "2019"
+  )
+
+teamdefense20 <- defense20 %>% 
+  mutate(
+    Season = "2020"
+  )
+
+teamdefense21 <- defense21 %>% 
+  mutate(
+    Season = "2021"
+  )
+
+teamdefense22 <- defense22 %>% 
+  mutate(
+    Season = "2022"
+  )
+
+teamdefense <- bind_rows(teamdefense14, teamdefense15, teamdefense16, teamdefense17, teamdefense18, teamdefense19, teamdefense20, teamdefense21, teamdefense22)
+
+bigten22 <- read_csv("bigten22.csv")
+
+
+```
+
+More text.
+
+```{r}
+ggplot() + 
+  geom_point(
+    data=bigten22, 
+    aes(x=SRS, y=SOS, size=W), 
+    color="grey", 
+    alpha=.3) + 
+  geom_point(
+    data=bigten22, 
+    aes(x=SRS, y=SOS, size=W), 
+    color="red") + 
+  geom_vline(xintercept = 7.1025) + 
+  geom_hline(yintercept = 0.97125) +
+  geom_text(aes(x=20.5, y=5.5, label="Good SRS, Good SOS"), color="blue") +
+  geom_text(aes(x=-4.5, y=-2.8, label="Bad SRS, Bad SOS"), color="blue") +
+  geom_text_repel(
+    data=bigten22, 
+    aes(x=SRS, y=SOS, label=Team)
+  ) +
+  
+   labs(
+    x="Simple Rating System (SRS)", 
+    y="Strength of Schedule (SOS)", 
+    title="USC", 
+    subtitle="USC is winning games despite having a harder strength of schedule than any Big Ten team.", 
+    caption="Source: Sports Reference | By Ryan Kenney"
+    ) +
+  
+  theme_light() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 8),
+    plot.subtitle = element_text(size = 10),
+    panel.grid.minor = element_blank()
+  )
+```
