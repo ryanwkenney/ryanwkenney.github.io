@@ -11,7 +11,9 @@ format:
 
 The Big Ten is an old-school football conference built on close, hard-nosed games full of tough defense and running the damn ball.
 
-Or, at least that's what stereotypes say within college football circles. But, there does lie merit behind these stereotypes.
+Or, at least that's what stereotypes say within college football circles. But, there does lie merit behind these stereotypes. That begs the question of how UCLA and USC, who are slated to join the Big Ten in 2024, will fare in conference play.
+
+Entering the 2022 college football season,
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
