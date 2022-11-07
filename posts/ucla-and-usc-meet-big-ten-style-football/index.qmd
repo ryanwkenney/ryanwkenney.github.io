@@ -13,7 +13,7 @@ The Big Ten is an old-school football conference built on close, hard-nosed game
 
 Or, at least that's what stereotypes say within college football circles. But, there does lie merit behind these stereotypes. That begs the question of how UCLA and USC, who are slated to join the Big Ten in 2024, will fare in conference play.
 
-Entering the 2022 college football season,
+Entering the 2022 college football season, the Big Ten had the lowest average total points per conference game (52.5) of any FBS conference since 2014. Meanwhile, the Pac-12 averaged a full touchdown and extra point more (59.5), coming in as the second-highest scoring power five conference on average.
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
