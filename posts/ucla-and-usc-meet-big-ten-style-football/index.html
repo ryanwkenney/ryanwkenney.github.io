@@ -281,12 +281,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>uclaOff, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(School, RushYds), <span class="at">weight=</span>RushYds), <span class="at">fill=</span><span class="st">"#2D68C4"</span>) <span class="sc">+</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>uscOff, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(School, RushYds), <span class="at">weight=</span>RushYds), <span class="at">fill=</span><span class="st">"#990000"</span>) <span class="sc">+</span></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"UCLA and USC can run with the best of the Big Ten, but will struggle to defend it "</span>, <span class="at">subtitle =</span> <span class="st">"Ohio State, Michigan, Michigan State and Nebraska appear on both lists."</span>,  <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">"Rush yards per game"</span>, <span class="at">caption =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"UCLA and USC can run... "</span>, <span class="at">subtitle =</span> <span class="st">"Both teams are in the top half of Big Ten rushing offenses."</span>,  <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">"Rush yards per game"</span>, <span class="at">caption =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span> </span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="fl">9.5</span>), </span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
 <span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    )</span>
@@ -299,12 +299,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>uclaDef, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(School, OppRushYds), <span class="at">weight=</span>OppRushYds), <span class="at">fill=</span><span class="st">"#2D68C4"</span>) <span class="sc">+</span></span>
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>uscDef, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(School, OppRushYds), <span class="at">weight=</span>OppRushYds), <span class="at">fill=</span><span class="st">"#990000"</span>) <span class="sc">+</span></span>
 <span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  </span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">""</span>, <span class="at">subtitle=</span> <span class="st">"ear on both lists."</span>, <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">"Opponent rush yards per game"</span>,  <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Ryan Kenney"</span>) <span class="sc">+</span> </span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"...but they may struggle to defend it"</span>, <span class="at">subtitle=</span> <span class="st">"But, they land in the bottom half defending the run."</span>, <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">"Opponent rush yards per game"</span>,  <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Ryan Kenney"</span>) <span class="sc">+</span> </span>
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span> </span>
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>   <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>   <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
 <span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="fl">9.5</span>), </span>
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    )</span>
@@ -360,7 +360,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Not too great. UCLA</p>
+<p>Not too great. UCLA consistently hangs out with the Big Ten defenses that give up the most points per game. USC isn’t much better, peaking at sixth-best in 2020 before plummeting to the second-worst in 2021.</p>
+<p>It’s not looking as promising for the newcomers anymore. Plus, many argue the Pac-12 is a step down in competition, so these aren’t even fair comparisons in the first place. Pac-12 teams have struggled to take the leap into elite territory. Only one team from the conference has made the College Football Playoff since its start, and it was the Oregon Ducks in the the Playoff’s first year (2014). Ironically, the Ducks fell in a 22-point loss to the Big Ten’s very own Ohio State Buckeyes.</p>
+<p>Is this competition gap still the case in 2022? Sports Reference gives us strength of schedule and simple rating data. Simple rating takes into account both strength of schedule and average point differential, meaning teams are rewarded for playing tough opponents, winning handily and, if they do lose, putting up a close fight.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -416,7 +418,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Closing Text here.</p>
+<p>Well well well. Both UCLA and USC find themselves with an above-average simple rating in the Big Ten. The Trojans take it a step further, boasting a 6-1 record despite having the strongest schedule in the conference. Several Pac-12 teams, including No.&nbsp;8 Oregon and No.&nbsp;14 Utah are having successful years, thus giving UCLA and USC worthy competition.</p>
+<p>UCLA and USC have arguably their strongest squads in years in 2022. Both teams are sitting with six wins and only one loss, having proved themselves against competent opponents. Thus, it’s hard to argue that entering a Big Ten schedule will come as too much of a shock.</p>
+<p>However, the style of football played in the Big Ten will take some getting used to. The Bruins and Trojans will face tougher defenses than ever before upon entering the conference, and their relative subpar rushing defenses will be tested by the strong rushing attacks of most Big Ten teams.</p>
+<p>Both teams will be competitive in the conference early on, but they’ll likely have some work to do before they’re knocking off the powerhouses like Ohio State and Michigan.</p>
+<p>As for that snowy, slow-paced matchup on the road against an average Big Ten team? Don’t be surprised if UCLA and USC fall short in a few of these games early on in their Big Ten careers.</p>
 
 
 
