@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "posts/usc-and-ucla-in-big-ten-football/index.html",
-    "href": "posts/usc-and-ucla-in-big-ten-football/index.html",
-    "title": "CHANGE THIS TO BE THE TITLE OF YOUR POST",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(ggbump)\nlibrary(ggrepel)\n\ndefense14 <- read_csv(\"defense14.csv\")\ndefense15 <- read_csv(\"defense15.csv\")\ndefense16 <- read_csv(\"defense16.csv\")\ndefense17 <- read_csv(\"defense17.csv\")\ndefense18 <- read_csv(\"defense18.csv\")\ndefense19 <- read_csv(\"defense19.csv\")\ndefense20 <- read_csv(\"defense20.csv\")\ndefense21 <- read_csv(\"defense21.csv\")\ndefense22 <- read_csv(\"defense22.csv\")\n\nteamdefense14 <- defense14 %>% \n  mutate(\n    Season = \"2014\"\n  )\n\nteamdefense15 <- defense15 %>% \n  mutate(\n    Season = \"2015\"\n  )\n\nteamdefense16 <- defense16 %>% \n  mutate(\n    Season = \"2016\"\n  )\n\nteamdefense17 <- defense17 %>% \n  mutate(\n    Season = \"2017\"\n  )\n\nteamdefense18 <- defense18 %>% \n  mutate(\n    Season = \"2018\"\n  )\n\nteamdefense19 <- defense19 %>% \n  mutate(\n    Season = \"2019\"\n  )\n\nteamdefense20 <- defense20 %>% \n  mutate(\n    Season = \"2020\"\n  )\n\nteamdefense21 <- defense21 %>% \n  mutate(\n    Season = \"2021\"\n  )\n\nteamdefense22 <- defense22 %>% \n  mutate(\n    Season = \"2022\"\n  )\n\nteamdefense <- bind_rows(teamdefense14, teamdefense15, teamdefense16, teamdefense17, teamdefense18, teamdefense19, teamdefense20, teamdefense21, teamdefense22)\n\nbigten22 <- read_csv(\"bigten22.csv\")\n\n\nMore text.\n\n\nCode\nggplot() + \n  geom_point(\n    data=bigten22, \n    aes(x=SRS, y=SOS, size=W), \n    color=\"grey\", \n    alpha=.3) + \n  geom_point(\n    data=bigten22, \n    aes(x=SRS, y=SOS, size=W), \n    color=\"red\") + \n  geom_vline(xintercept = 7.1025) + \n  geom_hline(yintercept = 0.97125) +\n  geom_text(aes(x=20.5, y=5.5, label=\"Good SRS, Good SOS\"), color=\"blue\") +\n  geom_text(aes(x=-4.5, y=-2.8, label=\"Bad SRS, Bad SOS\"), color=\"blue\") +\n  geom_text_repel(\n    data=bigten22, \n    aes(x=SRS, y=SOS, label=Team)\n  ) +\n  \n   labs(\n    x=\"Simple Rating System (SRS)\", \n    y=\"Strength of Schedule (SOS)\", \n    title=\"USC\", \n    subtitle=\"USC is winning games despite having a harder strength of schedule than any Big Ten team.\", \n    caption=\"Source: Sports Reference | By Ryan Kenney\"\n    ) +\n  \n  theme_light() +\n  theme(\n    plot.title = element_text(size = 16, face = \"bold\"),\n    axis.title = element_text(size = 8),\n    plot.subtitle = element_text(size = 10),\n    panel.grid.minor = element_blank()\n  )"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Blog",
     "section": "",
-    "text": "B1G\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2022\n\n\nRyan Kenney\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   },
   {
     "objectID": "about.html",
