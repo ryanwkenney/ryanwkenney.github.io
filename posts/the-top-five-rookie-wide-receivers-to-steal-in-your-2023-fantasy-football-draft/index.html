@@ -207,8 +207,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <p>It’s often the value picks, sleepers and waiver wire finds that win you fantasy football glory. So, lucky for you, I’ve utilized machine learning to predict the top five fantasy scorers at the wide receiver position from the 2023 draft class. Stealing these rookies in the middle and late rounds of your draft might just put you at the top this year.</p>
-<p>When determining the metrics to use as predictors for my model, I was careful to watch for multicollinearity. This occurs when two independent variables are highly correlated to each other and make it difficult to decipher the individual effect on the dependent variable, in this case fantasy points. For instance, a player with a high pre-draft grade is usually selected at a high overall pick, so it is not necessary to use both pre-draft grade and overall selection in my model.</p>
-<p>In the end, I utilized the total touchdowns and average yards per reception of the receiver in college, as well as their rating and overall selection in this year’s draft.</p>
+<p>When determining the metrics to use as predictors for my model, I was careful not to choose two variables highly correlated to each other. For instance, a player with a high pre-draft grade is usually also selected at a high overall pick. Therefore, it is not necessary to use both of these numbers in my model. Doing so would make it difficult for the model to decipher each one’s effects on fantasy production.</p>
+<p>In the end, I utilized the total touchdowns and average yards per reception of the receiver in college, as well as their rating and overall selection in this year’s draft. The following table shows the top five rookie receivers you should be drafting this year:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -358,22 +358,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">overall =</span> <span class="st">"Overall Draft Pick"</span>,</span>
 <span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>    <span class="at">.pred =</span> <span class="st">"Predicted Fantasy Points"</span></span>
 <span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">"By: Ryan Kenney | Source: cfbfastR"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_style</span>(</span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_style</span>(</span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>        <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>        <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">12</span>)</span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"The top five rookie wide receivers to steal in your draft"</span>,</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Expect a rookie-leading 85-point season from Chargers rookie Quentin Johnston"</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">"By: Ryan Kenney | Source: cfbfastR"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_style</span>(</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tab_style</span>(</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>        <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>        <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">12</span>)</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -819,7 +823,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
-    
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_title gt_font_normal" style="color: #000000; text-align: left; font-weight: bold;">The top five rookie wide receivers to steal in your draft</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="color: #000000; text-align: left; font-weight: bold;">Expect a rookie-leading 85-point season from Chargers rookie Quentin Johnston</td>
+    </tr>
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold;" scope="col" id="Name">Name</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold;" scope="col" id="College">College</th>
@@ -867,23 +876,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="quentin-johnston" class="level3">
 <h3 class="anchored" data-anchor-id="quentin-johnston">#1 Quentin Johnston</h3>
-<p>Quentin Johnston, the second receiver taken in the 2023 NFL Draft, comes in at number one in my rookie wide receiver predictions. Johnston is a big and athletic receiver who offers plenty of after the catch ability. He comes into an offense with prolific passer Justin Herbert. Johnston’s 85 predicted fantasy points would place him in the range of Lions receivers Josh Reynolds and DJ Chark last season.</p>
+<p>Quentin Johnston of TCU, the second receiver taken in the 2023 NFL Draft, comes in at number one in my rookie wide receiver predictions. Johnston is a big and athletic receiver who offers plenty of after-the-catch ability. He comes into a Chargers offense with a prolific passer in Justin Herbert. Johnston’s 85 predicted fantasy points would place him in the range of Lions receivers Josh Reynolds and DJ Chark last season.</p>
 </section>
 <section id="jordan-addison" class="level3">
 <h3 class="anchored" data-anchor-id="jordan-addison">#2 Jordan Addison</h3>
-<p>At the second spot is Jordan Addison out of USC. Addison benefits from a fantasy-friendly situation. He’ll line up along side Justin Jefferson in a Minnesota offense that recently lost its #2 receiver, Adam Thielen. Expect lots of usage early for Addison, resulting in around 81 fantasy points, landing him around Bears top receiver Darnell Mooney from last year.</p>
+<p>At the second spot is Jordan Addison out of USC. Addison benefits from a fantasy-friendly situation. He’ll line up along side Justin Jefferson in a Minnesota offense that recently lost its #2 receiver, Adam Thielen. Expect lots of usage early for Addison, resulting in around 81 fantasy points. This number indicates a similar season as the Bears’ former top receiver Darnell Mooney had in 2022.</p>
 </section>
 <section id="jaxon-smith-njigba" class="level3">
 <h3 class="anchored" data-anchor-id="jaxon-smith-njigba">#3 Jaxon Smith-Njigba</h3>
-<p>The first-selected receiver falls at third in my rankings. Smith-Njigba was as efficient as they come in college at Ohio State. He fits perfectly with DK Metcalf and Tyler Lockett in Seattle, but his fantasy production is limited by the presence of those two solid veterans. Expect around 76 fantasy points, a number comparable to Seattle’s Marquise Goodwin, who was the team’s WR3 last season.</p>
+<p>The first-selected receiver falls to third in my rankings. Smith-Njigba was as efficient as they come in college at Ohio State. He fits perfectly with DK Metcalf and Tyler Lockett in Seattle, but his fantasy production is limited by the presence of those two solid veterans. Expect around 76 fantasy points, a number comparable to former Seahawk Marquise Goodwin, who was the team’s WR3 last season.</p>
 </section>
 <section id="zay-flowers" class="level3">
 <h3 class="anchored" data-anchor-id="zay-flowers">#4 Zay Flowers</h3>
-<p>Flowers is undersized but explosive. He has the chance to have some big moments, but fantasy production may be sporadic in the Ravens’ offense. Players like Randall Cobb of Green Bay and Van Jefferson of the Rams were comparable last season, finishing around 65 points. These receivers had a few bright flashes and stepped up when their teams needed them due to other injuries.</p>
+<p>Boston College’s Zay Flowers is undersized but explosive. He has the chance to have some flashy moments, but fantasy production may be sporadic in the Ravens’ offense. Players like Randall Cobb of Green Bay and Van Jefferson of the Rams were comparable last season, finishing around 65 points. These receivers had a few bright flashes and stepped up when their teams needed them due to other injuries.</p>
 </section>
 <section id="jonathan-mingo" class="level3">
 <h3 class="anchored" data-anchor-id="jonathan-mingo">#5 Jonathan Mingo</h3>
-<p>Rounding out the top five is Jonathan Mingo of Ole Miss. Mingo enters a Carolina offense with a lot of unknowns. While this could hurt his production, it also gives him plenty of fantasy upside if he can click with rookie quarterback, first overall selection Bryce Young. A predicted 65 fantasy points puts him in a similar range as Flowers.</p>
+<p>Rounding out the top five is Jonathan Mingo of Ole Miss. Mingo enters a Carolina offense with a lot of unknowns. While this could hurt his production, it also gives him plenty of fantasy upside if he can click with rookie quarterback, first overall selection Bryce Young. A predicted 65 fantasy points puts him in a similar range as the previous rookie on this list, Zay Flowers.</p>
 
 
 </section>
